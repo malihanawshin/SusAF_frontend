@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.9f236c23.css",
+    "main.js": "/static/js/main.6955073d.js",
+    "static/js/787.de91554d.chunk.js": "/static/js/787.de91554d.chunk.js",
+    "static/media/intro.mp4": "/static/media/intro.41ca479740ba2bd5c840.mp4",
+    "static/media/delivery.png": "/static/media/delivery.470710d83aa7e817de0d.png",
+    "static/media/etherium_image.png": "/static/media/etherium_image.9ce1c0de78b8414377f3.png",
+    "static/media/svg-1.svg": "/static/media/svg-1.351689e3e84519d520c3c7751a5af9df.svg",
+    "static/media/package.png": "/static/media/package.cc9df7961c53527ea58b.png",
+    "static/media/svg-3.svg": "/static/media/svg-3.b847f53caaa30eb21709c92cc9750d4b.svg",
+    "static/media/svg-2.svg": "/static/media/svg-2.b754f5a7518ddb144f12f534aede5e84.svg",
+    "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/index.html",
+    "main.9f236c23.css.map": "/static/css/main.9f236c23.css.map",
+    "main.6955073d.js.map": "/static/js/main.6955073d.js.map",
+    "787.de91554d.chunk.js.map": "/static/js/787.de91554d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9f236c23.css",
+    "static/js/main.6955073d.js"
+  ]
+}
