@@ -59,7 +59,7 @@ const Navbar = ({toggle}) => {
               <NavBtn>
               <NavBtnLink to = '/viewSusAF'> View SusAF </NavBtnLink>
             </NavBtn>
-            }
+            
           </NavbarContainer>
       </Nav>
     </IconContext.Provider>
