@@ -1,6 +1,27 @@
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 
+export const MainContainer = styled.div`
+    background: #0c0c0c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 30px;
+    height: 800px;
+    position: relative;
+    z-index: 1; 
+
+    :before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        
+    }
+`
+
 export const FormContainer = styled.div`
     min-height: 692px;
     bottom: 0;
@@ -132,7 +153,7 @@ export const Column = styled.div`
 `
 
 export const FormButton = styled.button`
-    background: #5c85d6;
+    background: #00b300;
     padding: 12px 0;
     width: 120px;
     margin:0 auto;

@@ -8,17 +8,17 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import ls from 'local-storage'
 import {MainContainer, MainBg, Container, FormButton, Text} from './WalletElements';
-
+import UpdateIcon from '@mui/icons-material/Edit';
 
 const ViewSusAF = () => {
-    const [disable, setDisable] = useState(false);
+  
     const [impacts, setImpactsArray] = useState([]);
-    const [reference, setRefImpact] = useState([]);
     
     useEffect(() => {
       getImpactInfo();
     }, []);
 
+    
     const getImpactInfo = async (e) => {
             fetch('http://localhost:5000/impacts/',
             {
@@ -36,7 +36,8 @@ const ViewSusAF = () => {
           }));
     }
 
-    const getReference = (id) => {
+
+    const getReference = (x,id) => {
       //console.log(id);
               fetch('http://localhost:5000/impact/' + id,
               {
@@ -54,10 +55,10 @@ const ViewSusAF = () => {
             })
             )
             .then(res => {
-              console.log(res.data.result[0].impact_title);
+              //console.log(res.data.result[0].impact_title);
               //setRefImpact(res.data.result[0].impact_title);
-              console.log(res.data.result[0])
-              return res.data.result[0];
+              document.getElementById(x).innerText = res.data.result[0].impact_title;
+              //return res.data.result[0];
             }));
             
         }
@@ -93,13 +94,14 @@ const ViewSusAF = () => {
       <Container>
       <TableContainer component={Paper}>
       <Table sx={{ minWidth: 1000 }} aria-label="simple table">
-        <TableHead>
+        <TableHead style={{backgroundColor: "#00b300"}}>
           <TableRow>
-            <TableCell>Impact name</TableCell>
+            <TableCell >Impact name</TableCell>
             <TableCell >Reference impact</TableCell>
             <TableCell >Level</TableCell>
             <TableCell >Type</TableCell>
             <TableCell >Dimension</TableCell>
+            <TableCell></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -111,10 +113,11 @@ const ViewSusAF = () => {
               <TableCell component="th" scope="row">
                 {row.impact_title}
               </TableCell>
-              <TableCell>{(row._reference !== null ? getReference(row._reference).impact_title: "not enabled")}</TableCell>
+              <TableCell id={row.id_impact}>{(row._reference !== null ? getReference(row.id_impact,row._reference): "No reference")}</TableCell>
               <TableCell>{getLevel(row._level.toString())}</TableCell>
               <TableCell>{getType(row._type.toString())}</TableCell>
               <TableCell>{getDimension(row._dimension.toString())}</TableCell>
+              <TableCell> <UpdateIcon style={{ color: '#01bf71' }} /> </TableCell>
             </TableRow>
           ))}
         </TableBody>

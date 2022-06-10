@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ls from 'local-storage'
 import {FormContainer, FormWrap, FormContent, Form, FormH1, FormLabel, FormInput, 
-    FormButton, Text, Column, Row, FormTextArea, FormSelect, Option} from './MakeOrderElements';
+    FormButton, Text, Column, Row, FormTextArea, FormSelect, Option, MainContainer} from './MakeOrderElements';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import TextField from '@mui/material/TextField';
@@ -9,11 +9,10 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import {MainContainer, MainBg} from '../Wallet/WalletElements'
+
 
 const MakeOrder = () => {
     const [impacts, setImpactsArray] = useState([]);
-    const [nextOrderId, setNextOrderId ] = useState(null);
 
     useEffect(() => {
         getImpactInfo();
@@ -67,16 +66,17 @@ const MakeOrder = () => {
       )
       .then(res => {
           console.log(res.status);
-          //setImpactsArray(res.data);
+          toast.success("Impact successfully added!");
+          setTimeout(function() {
+            window.location='/viewSusAF'
+          }, 5000);
       }));
   }
 
 
-    
-
   return (
     <>
-    <ToastContainer position="top-center" autoClose={5000} hideProgressBar={false} 
+    <ToastContainer position="top-center" autoClose={4000} hideProgressBar={false} 
     newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover/>
     <MainContainer>
     <FormContainer>
@@ -131,7 +131,7 @@ const MakeOrder = () => {
                 <Column>
 
               <FormControl variant="standard" sx={{minWidth: 200 }}>
-                <InputLabel variant="standard" htmlFor="uncontrolled-native" required> Reference impact </InputLabel>
+                <InputLabel variant="standard" htmlFor="uncontrolled-native" required > Reference impact </InputLabel>
                     <Select defaultValue = "" name="reference" label="References" fullWidth required>
                       {impacts.map((item) => ( 
                         <MenuItem value={item.id_impact}> {item.impact_title} </MenuItem>

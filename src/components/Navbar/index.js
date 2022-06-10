@@ -57,7 +57,7 @@ const Navbar = ({toggle}) => {
               </NavMenu>
               
               <NavBtn>
-              <NavBtnLink to = '/viewSusAF'> View SusAF </NavBtnLink>
+              <NavBtnLink to = '/viewSusAF'> View Impacts </NavBtnLink>
             </NavBtn>
             
           </NavbarContainer>

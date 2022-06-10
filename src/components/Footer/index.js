@@ -44,9 +44,9 @@ const Footer = () => {
             <SocialMedia>
                 <SocialMediaWrap>
                     <SocialLogo to = '/' onClick = {toggleHome}>
-                        Distributed react
+                        Sustainability Awareness Framework
                     </SocialLogo>
-                    <WebsiteRights> Distributed react © {new Date().getFullYear()}. All rights reserved.</WebsiteRights>
+                    <WebsiteRights> Sustainability Awareness Framework © {new Date().getFullYear()}. All rights reserved.</WebsiteRights>
                     
                 </SocialMediaWrap>
             </SocialMedia>

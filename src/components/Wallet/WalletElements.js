@@ -7,7 +7,7 @@ export const MainContainer = styled.div`
     justify-content: center;
     align-items: center;
     padding: 0 30px;
-    height: 1100px;
+    height: 1300px;
     position: relative;
     z-index: 1; 
 
@@ -39,7 +39,7 @@ export const Container = styled.div`
     left: 0;
     right: 0;
     top: 0;
-    padding-top: 120px;
+    padding-top: 220px;
     padding-bottom: 120px;
     z-index: 0;
     overflow: hidden;
