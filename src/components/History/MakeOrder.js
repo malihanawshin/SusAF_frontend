@@ -12,27 +12,43 @@ import Select from '@mui/material/Select';
 import {MainContainer, MainBg} from '../Wallet/WalletElements'
 
 const MakeOrder = () => {
-    const [contract, setContract ] = useState(null);
+    const [impacts, setImpactsArray] = useState([]);
     const [nextOrderId, setNextOrderId ] = useState(null);
 
     useEffect(() => {
-        //handleContract();
+        getImpactInfo();
       }, []);
 
-    const handleContract = () => {
-        
-    }
-
-    const addImpact = () => {
-      var data = {
-        "id_impact": ls.get('companyUserId'),
-        "impact_title": ls.get('name'),
-        "_dimension": ls.get('dimension'),
-        "_level": ls.get('level'),
-        "_type": ls.get('type'),
-        "_reference": ls.get('reference')
+      const getImpactInfo = async (e) => {
+        fetch('http://localhost:5000/impacts/',
+        {
+            method: "GET"
+        }
+    )
+    .then(response => 
+      response.json().then(data => ({
+          data: data,
+          status: response.status
+      })
+      )
+      .then(res => {
+        setImpactsArray(res.data.result);
+      }));
       }
-      console.log("hi " + JSON.stringify(data))
+    
+
+    const addImpact = async (e) => {
+    e.preventDefault();
+    const form = new FormData(e.target);
+
+      var data = {
+        "impact_title": form.get('name'),
+        "_dimension": form.get('dimension'),
+        "_level": form.get('level'),
+        "_type": form.get('type'),
+        "_reference": form.get('reference')
+      }
+      console.log("hi " + JSON.stringify(data))  
     fetch('http://localhost:5000/addimpact/' + JSON.stringify(data)
     ,
         {
@@ -50,7 +66,8 @@ const MakeOrder = () => {
       })
       )
       .then(res => {
-          //ls.set("surveyId", res.data);
+          console.log(res.status);
+          //setImpactsArray(res.data);
       }));
   }
 
@@ -74,8 +91,8 @@ const MakeOrder = () => {
                 <Column>
                 <FormControl variant="standard" sx={{minWidth: 200 }}>
                 <InputLabel variant="standard" htmlFor="uncontrolled-native" required> Dimension </InputLabel>
-                    <Select name="dimension" label="Dimension" fullWidth required>
-                      <MenuItem value=""><em>None</em></MenuItem>
+                    <Select defaultValue = "" name="dimension" label="Dimension" fullWidth required>
+                      
                       <MenuItem value={1}>Social</MenuItem>
                       <MenuItem value={2}>Environmental</MenuItem>
                       <MenuItem value={3}>Economic</MenuItem>
@@ -87,8 +104,8 @@ const MakeOrder = () => {
                 <Column>
                 <FormControl variant="standard" sx={{minWidth: 200 }}>
                 <InputLabel variant="standard" htmlFor="uncontrolled-native" required> Level </InputLabel>
-                    <Select name="level" label="Levels" fullWidth required>
-                      <MenuItem value=""><em>None</em></MenuItem>
+                    <Select defaultValue = "" name="level" label="Levels" fullWidth required>
+                      
                       <MenuItem value={1}>Immediate</MenuItem>
                       <MenuItem value={2}>Enabling</MenuItem>
                       <MenuItem value={3}>Systematic</MenuItem>
@@ -102,8 +119,8 @@ const MakeOrder = () => {
                 <Column>
                 <FormControl variant="standard" sx={{minWidth: 200 }}>
                 <InputLabel variant="standard" htmlFor="uncontrolled-native" required> Impact type </InputLabel>
-                    <Select name="type" label="Types" fullWidth required>
-                      <MenuItem value=""><em>None</em></MenuItem>
+                    <Select defaultValue = "" name="type" label="Types" fullWidth required>
+                      
                       <MenuItem value={1}>Positive</MenuItem>
                       <MenuItem value={2}>Negative</MenuItem>
                       
@@ -115,11 +132,11 @@ const MakeOrder = () => {
 
               <FormControl variant="standard" sx={{minWidth: 200 }}>
                 <InputLabel variant="standard" htmlFor="uncontrolled-native" required> Reference impact </InputLabel>
-                    <Select name="reference" label="References" fullWidth required>
-                      <MenuItem value=""><em>None</em></MenuItem>
-                      <MenuItem value={1}>Positive</MenuItem>
-                      <MenuItem value={2}>Negative</MenuItem>
-                      
+                    <Select defaultValue = "" name="reference" label="References" fullWidth required>
+                      {impacts.map((item) => ( 
+                        <MenuItem value={item.id_impact}> {item.impact_title} </MenuItem>
+                      ))}
+                        
                     </Select>
                 </FormControl>
                 </Column>
