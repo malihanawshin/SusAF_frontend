@@ -21,7 +21,7 @@ function App() {
       <Menu/>
       <Routes>
         <Route path = "/" element = {<MakeOrder/>} exact/>
-        <Route path = "/connectWallet" element = {<ConnectPage/>} exact/>
+        <Route path = "/viewSusAF" element = {<ConnectPage/>} exact/>
         <Route path = "/about" element = {<InfoSection  { ...homeObjTwo }/>} exact/>
         <Route path = "/discover" element = {<InfoSection  { ...homeObjTwo }/>} exact/>
         <Route path = "/services" element = {<InfoSection  { ...homeObjThree }/>} exact/>

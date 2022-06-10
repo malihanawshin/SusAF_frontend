@@ -44,7 +44,25 @@ const Navbar = ({toggle}) => {
 
   return (
     <>
-    
+    <IconContext.Provider value = {{color: '#fff'}}>
+      <Nav scrollNav = {scrollNav}>
+          <NavbarContainer>
+              <Navlogo to = '/' >
+                 SusAF </Navlogo>
+              <MobileIcon onClick = {toggle}>
+                <FaBars/>
+              </MobileIcon>
+              <NavMenu>
+                
+              </NavMenu>
+              
+              <NavBtn>
+              <NavBtnLink to = '/viewSusAF'> View SusAF </NavBtnLink>
+            </NavBtn>
+            }
+          </NavbarContainer>
+      </Nav>
+    </IconContext.Provider>
     </>
   )
 }

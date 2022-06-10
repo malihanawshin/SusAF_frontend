@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import {ethers} from 'ethers';
-import erc20abi from '../../erc20abi.json';
 import ls from 'local-storage'
 import {FormContainer, FormWrap, FormContent, Form, FormH1, FormLabel, FormInput, 
     FormButton, Text, Column, Row, FormTextArea, FormSelect, Option} from './MakeOrderElements';
@@ -11,17 +9,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import image from '../../images/etherium_image.png'
 import {MainContainer, MainBg} from '../Wallet/WalletElements'
-
-const categories = [
-  { label: "Construction", value: 1 },
-  { label: "Furniture", value: 2 },
-  { label: "Vehicle", value: 3 },
-  { label: "Technology", value: 4 },
-  { label: "Service", value: 5 },
-  { label: "Electronics", value: 6 },
-];
 
 const MakeOrder = () => {
     const [contract, setContract ] = useState(null);
@@ -35,35 +23,39 @@ const MakeOrder = () => {
         
     }
 
-    const makeOrder = async (e) => {
-        e.preventDefault();
-        const data = new FormData(e.target);
-        var name = data.get("name");
-        var unit = data.get("unit");
-        var categories = data.get("categories");
-        var quantity = data.get("quantity");
-        var expirationBlock = data.get("expirationBlock");
-        var itemDescription = data.get("itemDescription");
-        var condition = data.get("condition");
-        var price = data.get("price");
-        var location = data.get("location");
-        var buyer = "0x0000000000000000000000000000000000000000";
-        var status = "Active";
-
-        let myObj = {"orderId": nextOrderId, "name": name, "unit": unit, "categories": categories,
-        "quantity": quantity, "expirationBlock": expirationBlock, "itemDescription": itemDescription, 
-        "condition": condition, "price": price, "buyer": buyer, "location": location, "status": status};
-       
-        var callPromise = contract.addOrder(myObj);
-    
-        callPromise.then(function(result){
-            console.log(result);
-            toast.success("Order is placed!");
-            setTimeout(function() {
-              window.location='/history'
-            }, 5000);
-        });
+    const addImpact = () => {
+      var data = {
+        "id_impact": ls.get('companyUserId'),
+        "impact_title": ls.get('name'),
+        "_dimension": ls.get('dimension'),
+        "_level": ls.get('level'),
+        "_type": ls.get('type'),
+        "_reference": ls.get('reference')
+      }
+      console.log("hi " + JSON.stringify(data))
+    fetch('http://localhost:5000/addimpact/' + JSON.stringify(data)
+    ,
+        {
+            headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+            },
+            method: "POST"
+        }
+    )
+    .then(response => 
+      response.json().then(data => ({
+          data: data,
+          status: response.status
+      })
+      )
+      .then(res => {
+          //ls.set("surveyId", res.data);
+      }));
   }
+
+
+    
 
   return (
     <>
@@ -73,7 +65,7 @@ const MakeOrder = () => {
     <FormContainer>
         <FormWrap>
           <FormContent>
-            <Form  onSubmit={makeOrder}>
+            <Form  onSubmit={addImpact}>
               <FormH1>Add new impact</FormH1>
               <Row>
                 <Column> 
@@ -82,7 +74,7 @@ const MakeOrder = () => {
                 <Column>
                 <FormControl variant="standard" sx={{minWidth: 200 }}>
                 <InputLabel variant="standard" htmlFor="uncontrolled-native" required> Dimension </InputLabel>
-                    <Select name="unit" label="Units" fullWidth required>
+                    <Select name="dimension" label="Dimension" fullWidth required>
                       <MenuItem value=""><em>None</em></MenuItem>
                       <MenuItem value={1}>Social</MenuItem>
                       <MenuItem value={2}>Environmental</MenuItem>
@@ -95,7 +87,7 @@ const MakeOrder = () => {
                 <Column>
                 <FormControl variant="standard" sx={{minWidth: 200 }}>
                 <InputLabel variant="standard" htmlFor="uncontrolled-native" required> Level </InputLabel>
-                    <Select name="condition" label="Condition" fullWidth required>
+                    <Select name="level" label="Levels" fullWidth required>
                       <MenuItem value=""><em>None</em></MenuItem>
                       <MenuItem value={1}>Immediate</MenuItem>
                       <MenuItem value={2}>Enabling</MenuItem>
@@ -110,7 +102,7 @@ const MakeOrder = () => {
                 <Column>
                 <FormControl variant="standard" sx={{minWidth: 200 }}>
                 <InputLabel variant="standard" htmlFor="uncontrolled-native" required> Impact type </InputLabel>
-                    <Select name="categories" label="Category" fullWidth required>
+                    <Select name="type" label="Types" fullWidth required>
                       <MenuItem value=""><em>None</em></MenuItem>
                       <MenuItem value={1}>Positive</MenuItem>
                       <MenuItem value={2}>Negative</MenuItem>
@@ -123,7 +115,7 @@ const MakeOrder = () => {
 
               <FormControl variant="standard" sx={{minWidth: 200 }}>
                 <InputLabel variant="standard" htmlFor="uncontrolled-native" required> Reference impact </InputLabel>
-                    <Select name="categories" label="Category" fullWidth required>
+                    <Select name="reference" label="References" fullWidth required>
                       <MenuItem value=""><em>None</em></MenuItem>
                       <MenuItem value={1}>Positive</MenuItem>
                       <MenuItem value={2}>Negative</MenuItem>

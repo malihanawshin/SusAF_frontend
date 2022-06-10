@@ -1,10 +1,10 @@
 import React from 'react'
-import WalletCard from '../components/Wallet/WalletCard'
+import ViewSusAF from '../components/Wallet/ViewSusAF'
 
 const ConnectPage = () => {
   return (
     <>
-        <WalletCard/>
+        <ViewSusAF/>
     </>
   )
 }

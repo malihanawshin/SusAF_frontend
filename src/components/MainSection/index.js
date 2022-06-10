@@ -10,11 +10,11 @@ const MainSection = () => {
     <MainContainer>
         
         <MainContent>
-            <MainH1>Distributed Circular Economy </MainH1>
+            <MainH1>Distributed react </MainH1>
             <MainP>Give your products a new life</MainP>
 
             <MainBtnWrapper>
-                <NavBtnLink to = '/connectWallet' primary = 'true' dark = 'true'>Connect Wallet</NavBtnLink>
+                <NavBtnLink to = '/viewSusAF' primary = 'true' dark = 'true'>Connect Wallet</NavBtnLink>
             </MainBtnWrapper>
         </MainContent>
     </MainContainer>

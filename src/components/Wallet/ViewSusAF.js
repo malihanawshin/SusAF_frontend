@@ -5,7 +5,7 @@ import ls from 'local-storage'
 import {MainContainer, MainBg, Container, FormWrap, Icon, FormContent, Form, FormH1, FormLabel, FormInput, FormButton, Text} from './WalletElements';
 import image from '../../images/etherium_image.png'
 
-const WalletCard = () => {
+const ViewSusAF = () => {
     const [disable, setDisable] = useState(false);
     const [successMsg, setSuccessMsg] = useState("Please connect to Metamask wallet");
     const [errorMessage, setErrorMessage ] = useState(null);
@@ -78,20 +78,11 @@ const WalletCard = () => {
     return (
       <>
       <MainContainer>
-        <MainBg style={{ backgroundImage:`url(${image})`,backgroundRepeat:"no-repeat",backgroundSize:"contain", 
-    
-    }}></MainBg>
+       
       <Container>
         <FormWrap>
           <FormContent>
-            <Form action = '#' onSubmit={connectWalletHandler}>
-              <Text>{successMsg}{errorMessage}</Text>
-              <Text></Text>
-              <FormButton color ='#01bf71' disabled={disable}>Connect</FormButton>
-              <Text>If you have multiple accounts, you can switch account in the Metamask wallet</Text>
-              {/*<Text> Your address: { defaultAccount }</Text>
-              <Text> Your balance: { userBalance }</Text>*/}
-            </Form>
+            
           </FormContent>
         </FormWrap>
       </Container>
@@ -100,4 +91,4 @@ const WalletCard = () => {
     )
 }
 
-export default WalletCard;
+export default ViewSusAF;
