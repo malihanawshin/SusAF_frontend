@@ -7,7 +7,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import ls from 'local-storage'
-import {MainContainer, MainBg, Container, FormButton, Text} from './WalletElements';
+import {MainContainer, MainBg, Container, FormButton, Text} from './ViewElements';
 import UpdateIcon from '@mui/icons-material/Edit';
 
 const ViewSusAF = () => {
@@ -94,7 +94,7 @@ const ViewSusAF = () => {
       <Container>
       <TableContainer component={Paper}>
       <Table sx={{ minWidth: 1000 }} aria-label="simple table">
-        <TableHead style={{backgroundColor: "#00b300"}}>
+        <TableHead style={{backgroundColor: "#4caf50"}}>
           <TableRow>
             <TableCell >Impact name</TableCell>
             <TableCell >Reference impact</TableCell>

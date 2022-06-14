@@ -10,9 +10,9 @@ const Sidebar = ({isOpen, toggle}) => {
         </Icon>
         <SidebarWrapper>
             <SidebarMenu>
-                <SidebarLink to = 'about' onClick = {toggle}> About </SidebarLink>
-                <SidebarLink to = 'browseOrders' onClick = {toggle}> Browse orders </SidebarLink>
-                <SidebarLink to = 'history' onClick = {toggle}> Order history </SidebarLink>
+                <SidebarLink to = '/' onClick = {toggle}> Add impact </SidebarLink>
+                <SidebarLink to = '/viewSusAF' onClick = {toggle}> View impacts </SidebarLink>
+                
             </SidebarMenu>
         </SidebarWrapper>
         <SideBtnWrapper>

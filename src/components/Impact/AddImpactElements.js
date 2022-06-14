@@ -153,7 +153,7 @@ export const Column = styled.div`
 `
 
 export const FormButton = styled.button`
-    background: #00b300;
+    background: #4caf50;
     padding: 12px 0;
     width: 120px;
     margin:0 auto;

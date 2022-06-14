@@ -19,10 +19,8 @@ const Footer = () => {
                 <FooterLinksWrapper>
                     <FooterLinkItems>
                         <FooterLinkTitle> About us </FooterLinkTitle>
-                        <FooterLink to = '/about'>How it works</FooterLink>
-                        <p> <a href= "https://medium.com/@checkhaben/how-to-setup-metamask-in-your-browser-7226251ea080" 
-                        style={{color:'white', fontSize:'14px', textDecoration: 'none'}} target="_blank"> 
-                        How to create wallet</a> </p>
+                        <FooterLink to = '/info'>How it works</FooterLink>
+                        
                         <FooterLink to = '/info'>Terms of Service</FooterLink>  
                     </FooterLinkItems>
                     <FooterLinkItems>
@@ -35,9 +33,9 @@ const Footer = () => {
                 <FooterLinksWrapper>
                     <FooterLinkItems>
                         <FooterLinkTitle> Features </FooterLinkTitle>
-                        <FooterLink to = '/browseOrders'>Browse orders</FooterLink>
-                        <FooterLink to = '/history'>Order history</FooterLink>
-                        <FooterLink to = '/offerHistory'>Offer history</FooterLink>  
+                        <FooterLink to = '/'>Add impact</FooterLink>
+                        <FooterLink to = '/viewSusAF'>View impacts</FooterLink>
+                        
                     </FooterLinkItems> 
                 </FooterLinksWrapper> 
             </FooterLinksContainer>
