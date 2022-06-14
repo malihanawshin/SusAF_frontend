@@ -1,4 +1,7 @@
-# frontend
+# Sustainability Awareness Framework tool frontend
+
+This tool will enable users to add sustainability impacts and view in the SusAF.
+
 use following commands to install the project in vs code-
 1. npm install react-router-dom
 
